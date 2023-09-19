@@ -129,10 +129,11 @@ in
       nixos-flake.lib = rec {
         inherit specialArgsFor;
 
-        mkLinuxSystem = mod: inputs.nixpkgs.lib.nixosSystem {
+        mkLinuxSystem = mod: extra: inputs.nixpkgs.lib.nixosSystem {
           # Arguments to pass to all modules.
           specialArgs = specialArgsFor.nixos;
           modules = [ mod ];
+          extraModules = extra;
         };
 
         mkMacosSystem = mod: inputs.nix-darwin.lib.darwinSystem {
