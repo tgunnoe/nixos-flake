@@ -136,9 +136,10 @@ in
           extraModules = extra;
         };
 
-        mkMacosSystem = mod: inputs.nix-darwin.lib.darwinSystem {
+        mkMacosSystem = mod: extra: inputs.nix-darwin.lib.darwinSystem {
           specialArgs = specialArgsFor.darwin;
           modules = [ mod ];
+          extraModules = extra;
         };
 
         mkHomeConfiguration = pkgs: mod: inputs.home-manager.lib.homeManagerConfiguration {
